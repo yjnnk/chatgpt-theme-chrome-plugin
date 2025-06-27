@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT Styler",
+  "version": "3.0",
+  "description": "Toggles a custom style on ChatGPT using direct script execution.",
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*"
+  ],
+  "action": {},
+  "background": {
+    "service_worker": "background.js"
+  }
+}
