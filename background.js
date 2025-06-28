@@ -28,21 +28,60 @@ function addStyle() {
 
   const style = document.createElement("style");
   style.id = styleId;
+
+
 style.innerHTML = `
-  html, body, #__next, main, #stage-sidebar-tiny-bar { background-color: #1e1e2e !important; color: #cdd6f4 !important; }
-  .dark\\:bg-gray-900, .dark\\:bg-gray-800 { background-color: #1a1b26 !important; border-color: #313244 !important; }
-  .markdown, .prose, .group.w-full, .rounded-xl { background-color: #1e1e2e !important; color: #cdd6f4 !important; border: none !important; box-shadow: none !important; }
-  textarea, input { background-color: #1a1b26 !important; color: #cdd6f4 !important; border-color: #89dceb44 !important; }
-  button, .btn { background-color: #313244 !important; color: #cdd6f4 !important; border-color: #94e2d5 !important; }
+  html, body, #__next, main, #stage-sidebar-tiny-bar {
+    background-color: #303446 !important;
+    color: #c6d0f5 !important;
+  }
+
   form { border: 1px solid #94e2d5 !important; border-radius: 25px !important }
+
+
+  .dark\\:bg-gray-900, .dark\\:bg-gray-800 {
+    background-color: #292c3c !important;
+    border-color: #414559 !important;
+  }
+
+  .markdown, .prose, .group.w-full, .rounded-xl {
+    background-color: #303446 !important;
+    color: #c6d0f5 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  textarea, input {
+    background-color: #292c3c !important;
+    color: #c6d0f5 !important;
+    border-color: #81c8be66 !important;
+  }
+
+  button, .btn {
+    background-color: #414559 !important;
+    color: #c6d0f5 !important;
+    border-color: #94e2d5 !important;
+  }
+
+  form {
+    border: 1px solid #94e2d5 !important;
+    border-radius: 25px !important;
+  }
+
   a { color: #94e2d5 !important; }
-  code, pre, .text-xs, .text-sm { color: #a6adc8 !important; }
-  .text-green-500, .text-red-500, .text-blue-500 { color: #f5c2e7 !important; }
+
+  code, pre, .text-xs, .text-sm {
+    color: #b5bfe2 !important;
+  }
+
+  .text-green-500, .text-red-500, .text-blue-500 {
+    color: #f4b8e4 !important;
+  }
+
   .bg-token-bg-primary {
-    background-color: #1e1e2e !important;
+    background-color: #303446 !important;
   }
 `;
-
 
   document.querySelectorAll('*').forEach(el => {
   el.style.fontFamily = 'Menlo, monospace';
