@@ -38,6 +38,9 @@ style.innerHTML = `
   a { color: #94e2d5 !important; }
   code, pre, .text-xs, .text-sm { color: #a6adc8 !important; }
   .text-green-500, .text-red-500, .text-blue-500 { color: #f5c2e7 !important; }
+  .bg-token-bg-primary {
+    background-color: #1e1e2e !important;
+  }
 `;
 
 
