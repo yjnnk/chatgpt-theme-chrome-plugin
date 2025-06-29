@@ -38,6 +38,10 @@ style.innerHTML = `
 
   form { border: 1px solid #94e2d5 !important; border-radius: 25px !important }
 
+  #page-header {
+      background-color: #292c3c !important;
+
+  }
 
   .dark\\:bg-gray-900, .dark\\:bg-gray-800 {
     background-color: #292c3c !important;
