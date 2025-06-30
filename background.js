@@ -33,6 +33,23 @@ function addStyle() {
   .find(el => el.textContent.trim() === "ChatGPT can make mistakes. Check important info.")
   ?.remove();
 
+const target = document.getElementById("thread-bottom-container");
+if (target) {
+  target.classList.remove(
+    "content-fade",
+    "relative",
+    "isolate",
+    "z-10",
+    "w-full",
+    "basis-auto",
+    "has-data-has-thread-error:pt-2",
+    "has-data-has-thread-error:[box-shadow:var(--sharp-edge-bottom-shadow)]",
+    "md:border-transparent",
+    // "md:pt-0",
+    // "flex",
+    // "flex-col"
+  );
+}
 
 
 style.innerHTML = `
@@ -46,10 +63,10 @@ style.innerHTML = `
   //  border-radius: 25px !important 
   // }
 
-  #page-header {
-      background-color: #292c3c !important;
+  // #page-header {
+  //     background-color: #292c3c !important;
 
-  }
+  // }
 
   .dark\\:bg-gray-900, .dark\\:bg-gray-800 {
     background-color: #292c3c !important;
