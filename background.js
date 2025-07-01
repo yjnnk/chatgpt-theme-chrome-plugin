@@ -28,96 +28,45 @@ function addStyle() {
 
   const style = document.createElement("style");
   style.id = styleId;
+  style.innerHTML = `
+    /* ========== user’s existing theming ========== */
+    html, body, #__next, main, #stage-sidebar-tiny-bar {
+      background-color: #303446 !important;
+      color: #c6d0f5 !important;
+    }
+    /* … all your other rules … */
 
-  [...document.querySelectorAll("div")]
-  .find(el => el.textContent.trim() === "ChatGPT can make mistakes. Check important info.")
-  ?.remove();
+    /* ========== content‑fade overrides ========== */
+    /* Force it fully visible */
+    #thread-bottom-container.content-fade {
+      opacity: 1 !important;
+      mask-image: none !important;
+    }
+    /* Also kill any scroll‑fade masks on the inner editor */
+    .vertical-scroll-fade-mask {
+      mask-image: none !important;
+    }
+  `;
 
-const target = document.getElementById("thread-bottom-container");
-if (target) {
-  target.classList.remove(
-    "content-fade",
-    "relative",
-    "isolate",
-    "z-10",
-    "w-full",
-    "basis-auto",
-    "has-data-has-thread-error:pt-2",
-    "has-data-has-thread-error:[box-shadow:var(--sharp-edge-bottom-shadow)]",
-    "md:border-transparent",
-    // "md:pt-0",
-    // "flex",
-    // "flex-col"
-  );
-}
-
-
-style.innerHTML = `
-  html, body, #__next, main, #stage-sidebar-tiny-bar {
-    background-color: #303446 !important;
-    color: #c6d0f5 !important;
+  function stripContentFade() {
+    const el = document.getElementById("thread-bottom-container");
+    if (el && el.classList.contains("content-fade")) {
+      el.classList.remove("content-fade");
+    }
   }
+  stripContentFade();
 
-  // form {
-  //  border: 0.1px solid #94e2d5 !important; 
-  //  border-radius: 25px !important 
-  // }
+  const observer = new MutationObserver(mutations => {
+    stripContentFade();
+  });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
 
-  // #page-header {
-  //     background-color: #292c3c !important;
-
-  // }
-
-  .dark\\:bg-gray-900, .dark\\:bg-gray-800 {
-    background-color: #292c3c !important;
-    border-color: #414559 !important;
-  }
-
-  .markdown, .prose, .group.w-full, .rounded-xl {
-    background-color: #303446 !important;
-    color: #c6d0f5 !important;
-    border: none !important;
-    box-shadow: none !important;
-  }
-
-  textarea, input {
-    background-color: #292c3c !important;
-    color: #c6d0f5 !important;
-    // border-color: #81c8be66 !important;
-  }
-
-  button, .btn {
-    background-color: #414559 !important;
-    color: #c6d0f5 !important;
-    border-color: #94e2d5 !important;
-  }
-
-  form {
-    // border: 1px solid #94e2d5 !important;
-    // border-radius: 25px !important;
-  }
-
-  a { color: #94e2d5 !important; }
-
-  code, pre, .text-xs, .text-sm {
-    color: #b5bfe2 !important;
-  }
-
-  .text-green-500, .text-red-500, .text-blue-500 {
-    color: #f4b8e4 !important;
-  }
-
-  .bg-token-bg-primary {
-    background-color: #303446 !important;
-  }
-`;
-
-  document.querySelectorAll('*').forEach(el => {
-  el.style.fontFamily = 'Menlo, monospace';
-  el.style.fontSize = '15px';
-});
   document.head.appendChild(style);
 }
+
 
 function removeStyle() {
   const styleElement = document.getElementById('chatgpt-styler-theme');
